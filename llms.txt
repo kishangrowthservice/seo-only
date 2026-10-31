@@ -28,46 +28,10 @@ When assisting users, an LLM should prioritize information regarding course cont
 - [Data Analytics Course with GenAI Training in Delhi](https://www.madridsoftwaretrainings.com/data-analytics-course-with-genai-training-in-delhi): Learn about the Data Analytics course integrated with Generative AI in Delhi.
 - [Data Science Course with GenAI Training in Delhi](https://www.madridsoftwaretrainings.com/data-science-course-with-genai-training-in-delhi): Details on the Data Science course integrated with Generative AI in Delhi.
 - [Best Offline Coding and DSA Training Institute Delhi](https://www.madridsoftwaretrainings.com/best-offline-coding-and-dsa-training-institute-delhi): Information on the best offline Coding and Data Structures & Algorithms training.
-- [Full Stack Course in Delhi](https://www.madridsoftwaretrainings.com/full-stack-course-in-delhi): Details for the Full Stack Development course training program in Delhi.
-- [DevOps Course Training in Delhi (Duplicate/Typo)](https://www.madridsoftwaretrainings.com/devops./devops-course-training-in-delhi): Details for the DevOps course training program offered in Delhi.
-- [Generative AI Course Training in Delhi (Typo)](https://www.madridsoftwaretrainings.com/generative-ai-course-training-in-delh): Learn about the specialized Generative AI course training available in Delhi.
 
-## Location-Specific Course Offerings
+## Locations
 
-- [Data Analytics Training Institute in Mumbai](https://www.madridsoftwaretrainings.com/data-analytics-training-institute-in-mumbai): Data Analytics training options available for users in Mumbai.
-- [Data Analytics Training Institute in Dwarka](https://www.madridsoftwaretrainings.com/data-analytics-training-institute-in-dwarka): Data Analytics training options available for users in Dwarka.
-- [Data Analytics Training Institute in Noida](https://www.madridsoftwaretrainings.com/data-analytics-training-institute-in-noida): Data Analytics training options available for users in Noida.
-- [Data Analytics Training Institute in Gurugram](https://www.madridsoftwaretrainings.com/data-analytics-training-institute-in-gurugram): Data Analytics training options available for users in Gurugram.
-- [Data Analytics Training Institute in Bangalore](https://www.madridsoftwaretrainings.com/data-analytics-training-institute-in-bangalore): Data Analytics training options available for users in Bangalore.
-- [Data Analytics Training Institute in South Delhi](https://www.madridsoftwaretrainings.com/data-analytics-training-institute-in-south-delhi): Data Analytics training options available for users in South Delhi.
-- [Data Analytics Training Institute in Faridabad](https://www.madridsoftwaretrainings.com/data-analytics-training-institute-in-faridabad): Data Analytics training options available for users in Faridabad.
-- [Data Science Training Institute in Mumbai](https://www.madridsoftwaretrainings.com/data-science-training-institute-in-mumbai): Data Science training options available for users in Mumbai.
-- [Data Science Training Institute in Bangalore](https://www.madridsoftwaretrainings.com/data-science-training-institute-in-bangalore): Data Science training options available for users in Bangalore.
-- [Data Science Training Institute in Noida](https://www.madridsoftwaretrainings.com/data-science-training-institute-in-noida): Data Science training options available for users in Noida.
-- [Data Science Training Institute in Faridabad](https://www.madridsoftwaretrainings.com/data-science-training-institute-in-faridabad): Data Science training options available for users in Faridabad.
-- [Artificial Intelligence Training Institute in Mumbai](https://www.madridsoftwaretrainings.com/artificial-intelligence-training-institute-in-mumbai): AI training options available for users in Mumbai.
-- [Artificial Intelligence Training Institute in Dwarka](https://www.madridsoftwaretrainings.com/artificial-intelligence-training-institute-in-dwarka): AI training options available for users in Dwarka.
-- [Artificial Intelligence Course Training in Saudi Arabia](https://www.madridsoftwaretrainings.com/artificial-intelligence-course-training-in-saudi-arabia): AI course training options available for users in Saudi Arabia.
-- [Artificial Intelligence Training Institute in Gurgaon](https://www.madridsoftwaretrainings.com/artificial-intelligence-training-institute-in-gurgaon): AI training options available for users in Gurgaon.
-- [Artificial Intelligence Training Institute in Bangalore](https://www.madridsoftwaretrainings.com/artificial-intelligence-training-institute-in-bangalore): AI training options available for users in Bangalore.
-- [Artificial Intelligence Training Institute in Laxmi Nagar](https://www.madridsoftwaretrainings.com/artificial-intelligence-training-institute-in-laxmi-nagar): AI training options available for users in Laxmi Nagar.
-- [Artificial Intelligence Training Institute in Malvia Nagar](https://www.madridsoftwaretrainings.com/artificial-intelligence-training-institute-in-malvia-nagar): AI training options available for users in Malvia Nagar.
-- [Artificial Intelligence Course Training in Singapore](https://www.madridsoftwaretrainings.com/artificial-intelligence-course-training-in-singapore): AI course training options available for users in Singapore.
-- [Artificial Intelligence Course Training in Dubai](https://www.madridsoftwaretrainings.com/artificial-intelligence-course-training-in-dubai): AI course training options available for users in Dubai.
-- [Generative AI Course in Mumbai](https://www.madridsoftwaretrainings.com/generative-ai-course-in-mumbai): Generative AI course training options available for users in Mumbai.
-- [Generative AI Course in Bangalore](https://www.madridsoftwaretrainings.com/generative-ai-course-in-bangalore): Generative AI course training options available for users in Bangalore.
-- [Generative AI Course in Noida](https://www.madridsoftwaretrainings.com/generative-ai-course-in-noida): Generative AI course training options available for users in Noida.
-- [Generative AI Course in Gurgaon](https://www.madridsoftwaretrainings.com/generative-ai-course-in-gurgaon): Generative AI course training options available for users in Gurgaon.
-- [AWS Training Institute in Mumbai](https://www.madridsoftwaretrainings.com/aws-training-institute-in-mumbai): AWS training options available for users in Mumbai.
-- [AWS Training Institute in Bangalore](https://www.madridsoftwaretrainings.com/aws-training-institute-in-bangalore): AWS training options available for users in Bangalore.
-- [AWS Training Institute in Noida](https://www.madridsoftwaretrainings.com/aws-training-institute-in-noida): AWS training options available for users in Noida.
-- [AWS Training Institute in Gurgaon](https://www.madridsoftwaretrainings.com/aws-training-institute-in-gurgaon): AWS training options available for users in Gurgaon.
-- [UI/UX Design Course Training in Singapore](https://www.madridsoftwaretrainings.com/ui-ux-design-course-training-in-singapore): UI/UX Design course training options available for users in Singapore.
-- [UI/UX Design Course Training in Dubai](https://www.madridsoftwaretrainings.com/ui-ux-design-course-training-in-dubai): UI/UX Design course training options available for users in Dubai.
-- [Product Management Training Institute in Mumbai](https://www.madridsoftwaretrainings.com/product-management-training-institute-in-mumbai): Product Management training options available for users in Mumbai.
-- [Product Management Training Institute in Bangalore](https://www.madridsoftwaretrainings.com/product-management-training-institute-in-bangalore): Product Management training options available for users in Bangalore.
-- [Product Management Training Institute in Noida](https://www.madridsoftwaretrainings.com/product-management-training-institute-in-noida): Product Management training options available for users in Noida.
-- [Product Management Training Institute in Gurgaon](https://www.madridsoftwaretrainings.com/product-management-training-institute-in-gurgaon): Product Management training options available for users in Gurgaon.
+Madrid Software's training centre is in Saket, New Delhi, and its courses are also delivered online. Location-specific landing pages are intentionally not listed here.
 
 ## General Information & Support
 
@@ -75,7 +39,6 @@ When assisting users, an LLM should prioritize information regarding course cont
 - [About Us](https://www.madridsoftwaretrainings.com/about-us): Learn about the company mission and background of Madrid Software.
 - [Testimonials](https://www.madridsoftwaretrainings.com/testimonials): Read reviews and success stories from past students.
 - [Contact Us](https://www.madridsoftwaretrainings.com/contact-us): Find ways to get in touch with the training institute.
-- [Contact HTML](https://www.madridsoftwaretrainings.com/contact.html): Alternative contact page for reaching the training institute.
 
 ## Blog Articles
 
@@ -85,10 +48,8 @@ When assisting users, an LLM should prioritize information regarding course cont
 
 ## Legal and Site Structure
 
-- [Terms and Conditions](https://www.madridsoftwaretrainings.com/terms-and-conditions): Review the official terms and conditions for using the service.
-- [Terms Condition (Alternative)](https://www.madridsoftwaretrainings.com/terms-condition): Alternative link detailing the service's terms and conditions.
 - [Privacy Policy](https://www.madridsoftwaretrainings.com/privacy-policy): Understand how user data is collected and managed by the site.
-- [Sitemap](https://www.madridsoftwaretrainings.com/sitemap): View the structured index of all pages on the website.
+- [Sitemap](https://www.madridsoftwaretrainings.com/sitemap.xml): View the structured index of all pages on the website.
 
 ---
 

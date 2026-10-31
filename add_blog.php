@@ -3,10 +3,26 @@
 
 // Require an authenticated admin session (previously this endpoint accepted
 // unauthenticated POSTs and wrote them straight into blogs.json).
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'secure' => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'),
+    'httponly' => true,
+    'samesite' => 'Lax',
+]);
 session_start();
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     http_response_code(403);
     exit('Forbidden: admin login required.');
+}
+
+// CSRF: every state-changing POST must carry the session token.
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $token = $_POST['csrf_token'] ?? '';
+    if (empty($_SESSION['csrf_token']) || !hash_equals($_SESSION['csrf_token'], (string) $token)) {
+        http_response_code(403);
+        exit('Forbidden: invalid CSRF token.');
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -57,10 +73,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!in_array($imageExt, $allowedExts)) {
             die('Invalid image type. Allowed: jpg, jpeg, png, gif, webp');
         }
+        // Verify the actual file content is an image, not just its name.
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime = $finfo ? finfo_file($finfo, $imageTmp) : '';
+        if ($finfo) {
+            finfo_close($finfo);
+        }
+        $allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        if (!in_array($mime, $allowedMimes, true)) {
+            die('Invalid image content. Allowed: jpg, jpeg, png, gif, webp');
+        }
         // Use document root for proper file system path
         $targetDir = $_SERVER['DOCUMENT_ROOT'] . '/images/blogs/';
         if (!is_dir($targetDir)) {
-            mkdir($targetDir, 0777, true);
+            mkdir($targetDir, 0755, true);
         }
         // Unique filename
         $newImageName = uniqid('blog_', true) . '.' . $imageExt;
@@ -89,6 +115,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
 
     $blogs[] = $newBlog;
+
+    // Back up the current blogs.json before overwriting it: the whole blog
+    // lives in this one file, and a corrupt write would lose every post.
+    // Backups sit in backups/, shielded by a deny-all .htaccess written once.
+    if (file_exists($blogFile)) {
+        $backupDir = __DIR__ . '/backups';
+        if (!is_dir($backupDir)) {
+            mkdir($backupDir, 0755, true);
+            file_put_contents($backupDir . '/.htaccess', "Require all denied\nDeny from all\n");
+            file_put_contents($backupDir . '/index.html', '');
+        }
+        copy($blogFile, $backupDir . '/blogs-' . date('Ymd-His') . '.json');
+    }
 
     // Write back to JSON file with file locking
     $fp = fopen($blogFile, 'w');

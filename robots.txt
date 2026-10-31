@@ -15,5 +15,12 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /admin-login.php
+Disallow: /admin-add-blog.php
+Disallow: /add_blog.php
+Disallow: /mailhandler.php
+Disallow: /admin-credentials.php
+Disallow: /mail-credentials.php
+Disallow: /backups/
 
 Sitemap: https://www.madridsoftwaretrainings.com/sitemap.xml

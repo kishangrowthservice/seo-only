@@ -14,5 +14,5 @@ function calculateReadTime($content) {
 
 
 function asset($path) {
-    return "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . '/' . ltrim($path, '/');
+    return "https://" . $_SERVER['SERVER_NAME'] . '/' . ltrim($path, '/');
 }

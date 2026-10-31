@@ -33,9 +33,6 @@ if (file_exists('blogs.json')) {
     <meta name="description"
         content="Explore expert insights, tutorials and trends in Data Science, Data Analytics, UI/UX design, Generative AI and Artificial Intelligence. Stay ahead with practical guides, case studies and the latest innovations in AI and data-driven decision-making">
 
-    <meta name="keywords"
-        content="data science blogs , data analytics blogs , artificial intelligence blogs , generative ai blogs , ui/ux design blogs , latest articles on data science , latest trends in artificial intelligence.">
-
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10860218040"></script>
@@ -291,7 +288,7 @@ if (file_exists('blogs.json')) {
                                             class="px-4 py-2 hover:bg-gray-100 block">Data Science</a>
                                         <a href="/artificial-intelligence-course-training-in-delhi"
                                             class="px-4 py-2 hover:bg-gray-100 block">Artificial Intelligence</a>
-                                        <a href="/full-stack-course-in-delhi"
+                                        <a href="/full-stack-developer-course-training-in-delhi"
                                             class="px-4 py-2 hover:bg-gray-100 block">Fullstack Development</a>
                                                                 <a href="/best-offline-coding-and-dsa-training-institute-delhi" class="px-4 py-2 hover:bg-gray-100 block">DSA With C++</a>
 
@@ -401,7 +398,7 @@ if (file_exists('blogs.json')) {
                                 <a href="/artificial-intelligence-course-training-in-delhi"
                                     class="block hover:text-gray-500">Artificial
                                     Intelligence</a>
-                                <a href="/full-stack-course-in-delhi" class="block hover:text-gray-500">Fullstack
+                                <a href="/full-stack-developer-course-training-in-delhi" class="block hover:text-gray-500">Fullstack
                                     Development</a>
                                                         <a href="/best-offline-coding-and-dsa-training-institute-delhi" class="px-4 py-2 hover:bg-gray-100 block">DSA With C++</a>
 

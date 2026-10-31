@@ -24,9 +24,6 @@ if (file_exists('blogs.json')) {
     <meta name="description"
         content="Boost Your Career in 2025 by Upgrading Yourself in Job Oriented Courses like Data Analytics, Data Science, Artificial Intelligence and UI/UX Design.">
 
-    <meta name="keywords"
-        content="Madrid Software Trainings, Business Analytics Course, Data Science Course, Machine Learning Course, Artificial Intelligence Course, Digital Marketing Course, Data Analytics Course , UI/UX Design Course , Fullstack Development Course.">
-
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10860218040"></script>

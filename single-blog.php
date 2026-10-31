@@ -2,6 +2,14 @@
 require_once 'Parsedown.php';
 require_once 'helpers.php';
 $Parsedown = new Parsedown();
+// Render post bodies safely: no raw HTML / script execution from stored
+// content (posts are pure markdown - verified - so output is unchanged).
+if (method_exists($Parsedown, 'setSafeMode')) {
+    $Parsedown->setSafeMode(true);
+}
+if (method_exists($Parsedown, 'setMarkupEscaped')) {
+    $Parsedown->setMarkupEscaped(true);
+}
 $blogs = [];
 if (file_exists('blogs.json')) {
     $json = file_get_contents('blogs.json');
@@ -101,9 +109,6 @@ if (!$notFound) {
 
     <meta name="description"
         content="<?= htmlspecialchars($seoDescription) ?>">
-
-    <meta name="keywords"
-        content="Madrid Software Trainings, Business Analytics Course, Data Science Course, Machine Learning Course, Artificial Intelligence Course, Digital Marketing Course, Data Analytics Course , UI/UX Design Course , Fullstack Development Course.">
 
 
     <!-- Google tag (gtag.js) -->
