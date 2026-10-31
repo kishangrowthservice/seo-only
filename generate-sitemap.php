@@ -24,10 +24,6 @@ $base = 'https://www.madridsoftwaretrainings.com';
 $static = [
     ['/', '1.0'],
     ['/data-science-training-institute-in-delhi', '0.9'],
-    ['/data-science-training-institute-in-bangalore', '0.8'],
-    ['/data-science-training-institute-in-mumbai', '0.8'],
-    ['/data-science-training-institute-in-noida', '0.8'],
-    ['/data-science-training-institute-in-faridabad', '0.8'],
     ['/data-science-course-with-genai-training-in-delhi', '0.8'],
     ['/blogs', '0.8'],
 ];
