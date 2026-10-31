@@ -216,6 +216,12 @@ if (file_exists('blogs.json')) {
 
   gtag('config', 'AW-937335270');
 </script>
+    <link rel="canonical" href="https://www.madridsoftwaretrainings.com/blogs" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Latest Blogs & Articles on Data Science,  Artificial Intelligence & Data Analytics" />
+    <meta property="og:description" content="Explore expert insights, tutorials and trends in Data Science, Data Analytics, UI/UX design, Generative AI and Artificial Intelligence. Stay ahead with practical guides, case studies and the latest innovations in AI and data-driven decision-making" />
+    <meta property="og:url" content="https://www.madridsoftwaretrainings.com/blogs" />
+    <meta name="twitter:card" content="summary_large_image" />
 </head>
 
 <body data-page-name="Home Page" class="bg-[#ffff]">
@@ -484,13 +490,13 @@ if (file_exists('blogs.json')) {
                 ></div> -->
                     </div>
 
-                    <h1 class="inline-block px-4 py-2 rounded-full text-sm md:text-xl font-bold md:mb-4 mb-3 bg-black">
+                    <h2 class="inline-block px-4 py-2 rounded-full text-sm md:text-xl font-bold md:mb-4 mb-3 bg-black">
                         <span
                             class="bg-gradient-to-r from-[#00E5FF] via-[#FFC700] to-[#DAB9F3] bg-clip-text text-transparent">
                             Blog
 
                         </span>
-                    </h1>
+                    </h2>
 
                     <h1 class="text-[22px] md:text-[40px] md:mb-4 mb-3 font-semibold leading-snug">
                         Explore the Future of<br>
@@ -547,7 +553,7 @@ if (file_exists('blogs.json')) {
 
         <!-- Left Side - Blog Grid -->
         <div class="w-full">
-            <h1 class="text-2xl font-bold mb-6">Fresh Articles</h1>
+            <h2 class="text-2xl font-bold mb-6">Fresh Articles</h2>
             
             <div id="carouselCards" class="grid grid-cols-1 sm:grid-cols-3 gap-8">
         <?php foreach($blogs as $blog): ?>

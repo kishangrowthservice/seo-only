@@ -201,6 +201,7 @@ if (file_exists('blogs.json')) {
 
   gtag('config', 'AW-937335270');
 </script>
+    <link rel="canonical" href="https://www.madridsoftwaretrainings.com/blogs" />
 </head>
 
 <body data-page-name="Home Page" class="bg-[#ffff]">

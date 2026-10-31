@@ -1,0 +1,19 @@
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-user
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Gemini-Deep-Research
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.madridsoftwaretrainings.com/sitemap.xml
