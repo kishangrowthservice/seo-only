@@ -24,3 +24,15 @@ stack, or functionality was changed. Base domain used throughout:
 - No credential changes (SEO-16) — flagged to owner.
 - No asset deletions (SEO-12).
 - No width/height attributes, no image compression — follow-up performance task (Roadmap).
+
+## Batch B1 — Rating schema unified to the verified figure (1 Nov 2026)
+
+Decision path: the audit found two contradictory claims — homepage 4.8/1536 vs data-science page 5.0/1536, neither visible on-page. The owner directed that one verified figure be applied to both pages. Verification: the business's public listing data (Google knowledge-panel style result for "Madrid Software Training Solutions", Saket address and phone matching the site) shows **Rating: 4.8 (1536 reviews)** — identical to the homepage figure. The 5.0 on the course page is the outlier and is treated as the error.
+
+Changes (repo files; live server unchanged until deployment):
+- `datascience.html` — Course `aggregateRating.ratingValue` 5 → **4.8** (ratingCount 1536 unchanged), so both pages now state the same verified 4.8/1536.
+- `datascience.html` — removed the two schema-only embedded `Review` objects (Sakshi Mehra, Neha Verma): those review texts appear nowhere in the page's visible content and cannot be verified from the repository. If the owner confirms they are genuine student reviews, the correct fix is to publish them visibly on the page first, then restore the markup.
+- `index.html` + `datascience.html` — the rating is now visible on-page in the success-stories section of both pages ("Rated 4.8 out of 5 based on 1,536 reviews on Google"), so the schema now matches visible content as Google's policy requires.
+- `index.html` — incidental fix found during validation: the homepage JSON-LD graph had a trailing comma in the `sameAs` array, which made the entire block invalid JSON; the comma was removed and the block now parses.
+
+Validation: every JSON-LD block in both files parses; both aggregateRatings now read ratingValue 4.8 / count 1536; the visible sentence is present in the rendered text of both pages; no `Review` schema remains on the course page.
