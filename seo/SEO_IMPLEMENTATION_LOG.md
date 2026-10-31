@@ -58,3 +58,12 @@ All four city pages said "<City> NCR" in their meta/OG/Twitter descriptions. Mum
 
 ### Awaiting owner approval (deletions — not done, per instruction)
 - `images/Archive.zip` (~63 MB) and any oversized/unreferenced images: candidates from the audit. Deleting images that live pages still reference would break the site, so the safe sweep is: confirm the candidate list against live pages first, then delete on approval.
+
+## Batch B3 — City pages noindexed by owner decision (1 Nov 2026)
+
+The owner chose the noindex option for the four near-duplicate city course pages (bodies 99.8–99.9% identical to the Delhi page; only the Saket, Delhi address is real). Changes (repo; live effect on deployment):
+- `datascience-mumbai.html`, `datascience-noida.html`, `datascience-bangalore.html`, `datascience-faridabad.html` — added `<meta name="robots" content="noindex, follow" />`. Pages stay live and usable (ads/direct visits unaffected), links on them are still followed, and the change is fully reversible by removing one line. The Delhi course page, GenAI page and homepage are NOT noindexed (verified: no noindex present there).
+- `generate-sitemap.php` + regenerated `sitemap.xml` — the four city URLs removed (sitemap 40 → 36 URLs); noindexed URLs should not be listed in a sitemap.
+- `seo/sitemap-production-proposal.xml` — the same four city URLs removed (89 → 85 URLs), so the server-side sitemap replacement matches this decision.
+
+Note: after deployment Google will drop these pages from its index over the following recrawls; rankings impact is limited to those four duplicate URLs, which is the intended outcome.
