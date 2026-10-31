@@ -67,3 +67,13 @@ The owner chose the noindex option for the four near-duplicate city course pages
 - `seo/sitemap-production-proposal.xml` — the same four city URLs removed (89 → 85 URLs), so the server-side sitemap replacement matches this decision.
 
 Note: after deployment Google will drop these pages from its index over the following recrawls; rankings impact is limited to those four duplicate URLs, which is the intended outcome.
+
+## Server-fix pack prepared — soft-404 + redirects (1 Nov 2026)
+
+Re-verified live on 1 Nov 2026: the soft-404 problem is unchanged — junk URLs, `/terms-and-conditions`, `/full-stack-course-in-delhi`, `/devops./devops-course-training-in-delhi` and `/generative-ai-course-training-in-delh` all still return HTTP 200 with a "404 Not Found" title (server: Apache). This cannot be fixed from the repository: it is the server's error handling / rewrite rules, which are not in the repo.
+
+Prepared and pushed, ready for the deployment step:
+- `404.php` (repo root) — a real 404 handler (`http_response_code(404)`, noindex, branded page with working links to Home / Data Science / Blog / Contact and the site's published phone number). php -l clean.
+- `seo/SERVER_FIXES.md` — the full deployment recipe: `ErrorDocument 404 /404.php`, a warning to inspect the existing catch-all rewrite first (the likely root cause), the complete 301 table (/blog.php and /blogs.php → /blogs; the navigation-linked dead full-stack slug → the working course page; the malformed devops URL and the typo GenAI slug → their real pages; /contact.html → /contact-us; /datascience.html and /index.html → their canonical clean URLs), the deliberate decision NOT to redirect /terms-and-conditions anywhere (no real terms page exists; /terms-condition wrongly serves the Contact page — flagged as a separate content bug), the sitemap replacement step, and a curl verification checklist.
+
+Applying this needs hosting access and ~15 minutes at deployment time.
