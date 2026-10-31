@@ -37,7 +37,7 @@ Madrid Software's training centre is in Saket, New Delhi, and its courses are al
 
 - [Madrid Software Homepage](https://www.madridsoftwaretrainings.com/): Main landing page for job-oriented tech courses in Data Analytics, AI, and Development.
 - [About Us](https://www.madridsoftwaretrainings.com/about-us): Learn about the company mission and background of Madrid Software.
-- [Testimonials](https://www.madridsoftwaretrainings.com/testimonials): Read reviews and success stories from past students.
+- [Testimonials](https://www.madridsoftwaretrainings.com/testimonials/): Read reviews and success stories from past students.
 - [Contact Us](https://www.madridsoftwaretrainings.com/contact-us): Find ways to get in touch with the training institute.
 
 ## Blog Articles
