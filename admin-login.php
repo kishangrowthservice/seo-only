@@ -1,13 +1,26 @@
 <?php
 session_start();
 
-$ADMIN_USER = 'admin';
-$ADMIN_PASS = 'password123';
+// Credentials are NOT stored in this file (the previous plaintext password was
+// public in this repository and must be considered compromised).
+// Configure them on the server only, either as environment variables
+// ADMIN_USER / ADMIN_PASS_HASH, or in admin-credentials.php next to this file
+// (see admin-credentials.example.php; that file is git-ignored).
+$credFile = __DIR__ . '/admin-credentials.php';
+if (file_exists($credFile)) {
+    require $credFile;
+}
+$ADMIN_USER = getenv('ADMIN_USER') ?: (defined('ADMIN_USER') ? ADMIN_USER : '');
+$ADMIN_PASS_HASH = getenv('ADMIN_PASS_HASH') ?: (defined('ADMIN_PASS_HASH') ? ADMIN_PASS_HASH : '');
+
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $_POST['username'] ?? '';
     $pass = $_POST['password'] ?? '';
-    if ($user === $ADMIN_USER && $pass === $ADMIN_PASS) {
+    if ($ADMIN_USER === '' || $ADMIN_PASS_HASH === '') {
+        $error = 'Admin login is not configured on the server.';
+    } elseif (hash_equals($ADMIN_USER, (string) $user) && password_verify((string) $pass, $ADMIN_PASS_HASH)) {
+        session_regenerate_id(true);
         $_SESSION['admin_logged_in'] = true;
         header('Location: admin-add-blog.php');
         exit();

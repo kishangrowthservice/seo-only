@@ -539,7 +539,7 @@ if (file_exists('blogs.json')) {
                 <?php foreach ($pageBlogs as $blog): ?>
                 <div>
                     <div class="relative mb-4">
-                        <a href="single-blog.php?slug=<?= urlencode($blog['slug']) ?>">
+                        <a href="/blogs/<?= urlencode($blog['slug']) ?>">
                             <img src="<?= htmlspecialchars($blog['image']) ?>" class="w-full h-60 object-cover rounded-xl" alt="<?= htmlspecialchars($blog['title']) ?>" />
                         </a>
                         <div class="absolute top-2 right-2 bg-blue-700 text-white text-xs px-3 py-1 rounded-full text-center leading-tight font-semibold">

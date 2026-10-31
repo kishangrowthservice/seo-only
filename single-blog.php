@@ -62,16 +62,30 @@ if (!$notFound) {
         'mainEntityOfPage' => ['@type' => 'WebPage', '@id' => $canonicalUrl],
     ];
 }
-// Related posts: latest others, for internal linking.
+// Related posts: prefer posts that share keywords with this one (topical
+// internal linking), most recent first within the same score.
 $related = [];
 if (!$notFound) {
-    foreach (array_reverse($blogs) as $b) {
-        if ($b['slug'] !== $post['slug']) {
-            $related[] = $b;
+    $kwOf = function ($b) {
+        return array_filter(array_map('trim', explode(',', strtolower($b['seoKeywords'] ?? ''))));
+    };
+    $myKw = $kwOf($post);
+    $scored = [];
+    foreach ($blogs as $b) {
+        if ($b['slug'] === $post['slug']) {
+            continue;
         }
-        if (count($related) >= 3) {
-            break;
-        }
+        $scored[] = [
+            'post' => $b,
+            'score' => count(array_intersect($myKw, $kwOf($b))),
+            'ts' => strtotime($b['date']) ?: 0,
+        ];
+    }
+    usort($scored, function ($a, $b) {
+        return ($b['score'] <=> $a['score']) ?: ($b['ts'] <=> $a['ts']);
+    });
+    foreach (array_slice($scored, 0, 3) as $s) {
+        $related[] = $s['post'];
     }
 }
 ?>
@@ -574,7 +588,7 @@ if (!$notFound) {
         <?php foreach ($related as $blog): ?>
         <div>
             <div class="relative mb-4">
-                <a href="single-blog.php?slug=<?= urlencode($blog['slug']) ?>">
+                <a href="/blogs/<?= urlencode($blog['slug']) ?>">
                     <img src="<?= htmlspecialchars($blog['image']) ?>" class="w-full h-60 object-cover rounded-xl" alt="<?= htmlspecialchars($blog['title']) ?>" loading="lazy" />
                 </a>
                 <div class="absolute top-2 right-2 bg-blue-700 text-white text-xs px-3 py-1 rounded-full text-center leading-tight font-semibold">

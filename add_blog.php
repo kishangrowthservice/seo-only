@@ -1,6 +1,14 @@
 <?php
 // add_blog.php: Handles blog post submissions and updates blogs.json
 
+// Require an authenticated admin session (previously this endpoint accepted
+// unauthenticated POSTs and wrote them straight into blogs.json).
+session_start();
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    http_response_code(403);
+    exit('Forbidden: admin login required.');
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = isset($_POST['title']) ? trim($_POST['title']) : '';
     $content = isset($_POST['content']) ? trim($_POST['content']) : '';
