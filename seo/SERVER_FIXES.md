@@ -146,3 +146,26 @@ a test enquiry still arrives.
    admin login works with the NEW password only; a test blog post can be
    created (and `backups/` gains a copy); a test enquiry arrives by mail;
    `curl -I` shows the new headers; the 4 city pages show the noindex tag.
+
+## Problem 6 — No browser cache headers (PageSpeed's biggest single saving)
+
+PageSpeed (1 Nov 2026) estimates **11,293 KiB** of repeat-download waste on
+the homepage alone because static assets ship with no cache lifetimes.
+Add to `.htaccess`:
+
+```
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+```
+(HTML stays uncached so content edits show immediately; version file names
+or query strings when CSS/JS change, or shorten those two to 1 week.)
