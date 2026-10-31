@@ -77,3 +77,31 @@ Prepared and pushed, ready for the deployment step:
 - `seo/SERVER_FIXES.md` — the full deployment recipe: `ErrorDocument 404 /404.php`, a warning to inspect the existing catch-all rewrite first (the likely root cause), the complete 301 table (/blog.php and /blogs.php → /blogs; the navigation-linked dead full-stack slug → the working course page; the malformed devops URL and the typo GenAI slug → their real pages; /contact.html → /contact-us; /datascience.html and /index.html → their canonical clean URLs), the deliberate decision NOT to redirect /terms-and-conditions anywhere (no real terms page exists; /terms-condition wrongly serves the Contact page — flagged as a separate content bug), the sitemap replacement step, and a curl verification checklist.
 
 Applying this needs hosting access and ~15 minutes at deployment time.
+
+## Senior hardening round — all remaining technical SEO + security code fixes (1 Nov 2026)
+
+Owner instruction: fix all technical SEO and the security issues, senior-level plan and execution. Everything below is implemented and validated in the repo; the live server still needs the deployment + rotations in seo/SERVER_FIXES.md (deployment order section).
+
+### Security
+- `mailhandler.php` REWRITTEN: SMTP password removed from code (server-only env or git-ignored `mail-credentials.php`; new `mail-credentials.example.php` documents rotation-first setup). TLS verification ON by default with a temporary, explicitly-named opt-out while the mail cert's hostname mismatch is fixed at the host. No more public leakage of PHPMailer internals (errors are logged, visitors get a plain "error"); header-injection stripping on all fields; Reply-To restored; honeypot field + per-IP throttle (5/10 min) against form spam. Fails closed (500, no send) when credentials are not configured.
+- Sessions: `session_set_cookie_params` (HttpOnly, SameSite=Lax, Secure on HTTPS) in admin-login.php, admin-add-blog.php, add_blog.php.
+- CSRF: per-session token generated in the admin panel, hidden field in the blog form, `hash_equals` verification in add_blog.php before any state change.
+- Uploads: real MIME verification (finfo) in addition to the extension whitelist; directory creation 0777 -> 0755.
+- Stored-XSS door closed: single-blog.php enables Parsedown safe mode + markup escaping (guarded by method_exists). Verified beforehand: all 32 stored posts contain ZERO raw HTML, so rendering output is unchanged.
+- blogs.json single-point-of-failure mitigated: add_blog.php now writes a timestamped backup into `backups/` (deny-all .htaccess written on first use) before every overwrite.
+- helpers.php: dead `asset()` helper no longer builds http:// URLs with a raw port (now https, no port).
+
+### Technical SEO
+- `llms.txt` cleaned: 67 -> 27 links. Removed the malformed devops URL and the typo GenAI URL (both soft-404s, one even labelled "(Typo)" in the file), the dead full-stack slug (correct one kept), the /contact.html duplicate, both broken terms links, the /sitemap HTML URL (now the real sitemap.xml), and the ENTIRE 28-link "Location-Specific" doorway section (cities/localities/countries with no centre) - replaced by one factual Locations note (Saket, New Delhi + online). Kept links verified live (200 sweep).
+- `blogs.php`: its 2 links to the dead /full-stack-course-in-delhi slug now point to the working course page.
+- Stuffed generic `meta keywords` removed from blog.php, blogs.php, single-blog.php.
+- `datascience.html` meta description 174 -> 134 chars (all 3 copies: description/OG/Twitter).
+- 11 blog seoTitles trimmed from 61-86 to 41-59 chars using the posts' own wording; field-level diff vs repo confirms ONLY those 11 seoTitle fields changed.
+- `robots.txt`: admin/form/credential/backup paths disallowed for all crawlers (AI-bot allows and sitemap line unchanged).
+- `README.md`: replaced the "Madrid-sfotware / Test" placeholder with real project notes (partial-snapshot warning, credential policy).
+
+### Server pack v2 (seo/SERVER_FIXES.md addendum)
+Security-headers .htaccess block (HSTS/nosniff/SAMEORIGIN/Referrer-Policy/Permissions-Policy; CSP deliberately deferred - it must be built from the real third-party asset list), credential-file and backups deny rules, the mail-certificate fix (hostname mismatch proven 1 Nov 2026), and a strict 7-step deployment order: rotate mailbox password -> fix cert -> set admin hash -> upload files -> merge .htaccess -> swap sitemap -> verify.
+
+### Validation actually run
+php -l clean on every PHP file; no old passwords remain in any repo file (git history still has them - rotation is the fix, see report); full local flow test (built-in server, throwaway credentials): wrong password rejected, login 302, session cookie carries HttpOnly + SameSite=Lax, CSRF token present in form, tokenless POST -> 403, token POST passes guards, mailhandler unconfigured -> 500 with a plain "error" and zero internal details; blog post render complete (1 canonical, keywords meta gone, 3 topical related links); blogs.json diff = 11 seoTitle fields only.
