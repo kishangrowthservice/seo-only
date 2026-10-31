@@ -36,3 +36,25 @@ Changes (repo files; live server unchanged until deployment):
 - `index.html` — incidental fix found during validation: the homepage JSON-LD graph had a trailing comma in the `sameAs` array, which made the entire block invalid JSON; the comma was removed and the block now parses.
 
 Validation: every JSON-LD block in both files parses; both aggregateRatings now read ratingValue 4.8 / count 1536; the visible sentence is present in the rendered text of both pages; no `Review` schema remains on the course page.
+
+## Batch B2 — Auth hardening, meta trims, city-description fixes, topical related posts (1 Nov 2026)
+
+Owner instruction for this round: apply the fixes; ask before deleting anything. Nothing was deleted.
+
+### 1. Admin auth hardening (security)
+- `admin-login.php` — the plaintext password (`admin` / `password123`, public in this repo, treated as compromised) is GONE from the code. Login now verifies with `password_verify()` against a hash supplied only on the server: env `ADMIN_USER` / `ADMIN_PASS_HASH`, or a git-ignored `admin-credentials.php` (format + hash-generation command in the new `admin-credentials.example.php`; `.gitignore` now excludes the real file). Login fails closed ("not configured") when no hash is set, and the session id is regenerated on login.
+- `add_blog.php` — NEW FINDING, worse than the password: this endpoint had **no session check at all**; anyone could POST a blog post straight into `blogs.json` without logging in. It now returns 403 unless the admin session is present (same guard as `admin-add-blog.php`).
+- Verified locally (PHP 8.3, throwaway test credentials, discarded): wrong password rejected; the old public password rejected; correct password 302 → panel; add_blog.php 403 without session, passes the guard with one. php -l clean.
+- Still required at deployment: set the new password hash on the server (one `php -r` command, in the example file). Until the hardened files are deployed, the LIVE login still uses the old public password.
+
+### 2. Blog meta descriptions trimmed (blogs.json)
+11 posts had seoDescriptions of 171–348 chars (search results truncate ~160). Each was shortened to 128–164 chars using only the post's own wording — no new claims. Field-level diff against the repo version verified: exactly those 11 `seoDescription` fields changed, all other content byte-identical after parsing.
+
+### 3. City-page description corrections
+All four city pages said "<City> NCR" in their meta/OG/Twitter descriptions. Mumbai and Bangalore are not in the NCR: fixed to "Mumbai" / "Bangalore". Noida and Faridabad ARE in the NCR and were left as-is. Also fixed the missing space in ",offering" → ", offering" in all four (3 occurrences per page: description + OG + Twitter). The deeper city-page duplication (99.9% identical body content) still needs the owner's content decision — not touched.
+
+### 4. Topical related posts + clean internal links
+`single-blog.php` already had a Related Articles block (Batch A) but it picked the latest 3 posts regardless of topic, and linked them via `single-blog.php?slug=`. Now: related posts are ranked by shared `seoKeywords` with the current post (recency as tiebreak), and all blog internal links use the clean canonical form `/blogs/<slug>` (verified live: clean URLs return 200; also fixed the same query-string link in `blog.php`; `blogs.php` already used clean links). Local render validation (with a throwaway stub for the repo's placeholder Parsedown.php — the real library is server-only — and an mbstring polyfill for the sandbox): page renders fully, exactly one canonical, related section shows 3 topically matched posts with clean links, and the 404 + noindex path for bad slugs still works.
+
+### Awaiting owner approval (deletions — not done, per instruction)
+- `images/Archive.zip` (~63 MB) and any oversized/unreferenced images: candidates from the audit. Deleting images that live pages still reference would break the site, so the safe sweep is: confirm the candidate list against live pages first, then delete on approval.
